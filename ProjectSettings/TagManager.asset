@@ -6,6 +6,7 @@ TagManager:
   tags:
   - rightwall
   - leftwall
+  - spike
   layers:
   - Default
   - TransparentFX

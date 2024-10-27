@@ -12,6 +12,10 @@ public class Bird : MonoBehaviour
 
     public int score = 0;
     public Text scoreText;
+    public Text gameOverText;
+
+    private bool isDead = false;
+    private bool isRotating = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,15 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isRotating) 
+        {
+            transform.Rotate(0, 0, 270 * Time.deltaTime);
+            return;
+        }
+        if(isDead) 
+        {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector2(0, jumpForce);
@@ -65,6 +78,21 @@ public class Bird : MonoBehaviour
             {
                 scoreText.text = "0" + score;
             }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if(collision.gameObject.tag == "spike" && isRotating)
+        {
+            isRotating = false;
+            isDead = true;
+        }
+        if(collision.gameObject.tag == "spike" && !isDead) 
+        {
+            gameOverText.gameObject.SetActive(true);
+            isRotating = true;
+            rb.gravityScale = 2;
         }
     }
 }
