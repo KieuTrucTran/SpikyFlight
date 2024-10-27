@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bird : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float jumpForce = 8f;
-    
+
     private bool hitRightwall = false;
+
+    public int score = 0;
+    public Text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +43,28 @@ public class Bird : MonoBehaviour
         {
             hitRightwall = true;
             transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
+            score++;
+            if(score > 9) 
+            {
+                scoreText.text = "" + score;
+            }
+            else 
+            {
+                scoreText.text = "0" + score;
+            }
         }
         else {
             hitRightwall = false;
             transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            score++;
+            if(score > 9) 
+            {
+                scoreText.text = "" + score;
+            }
+            else 
+            {
+                scoreText.text = "0" + score;
+            }
         }
     }
 }
