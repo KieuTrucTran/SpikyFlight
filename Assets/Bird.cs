@@ -13,19 +13,31 @@ public class Bird : MonoBehaviour
     public int score = 0;
     public Text scoreText;
     public Text gameOverText;
+    public GameObject playAgain;
 
     private bool isDead = false;
     private bool isRotating = false;
+
+    private bool isStarted = false;
+
+    private LogicScript logicManager;
+    public GameObject logicManagerObject;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        logicManager = logicManagerObject.GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isStarted == false) 
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
         if(isRotating) 
         {
             transform.Rotate(0, 0, 270 * Time.deltaTime);
@@ -37,16 +49,20 @@ public class Bird : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            isStarted = true;
             rb.velocity = new Vector2(0, jumpForce);
+            rb.constraints = RigidbodyConstraints2D.None;
         }
 
-        if(hitRightwall)
-        {
-            transform.Translate(Vector2.left * (Time.deltaTime * 2));
-        }
-        else
-        {
-            transform.Translate(Vector2.right * (Time.deltaTime * 2));
+        if(isStarted) {
+            if(hitRightwall)
+            {
+                transform.Translate(Vector2.left * (Time.deltaTime * 2));
+            }
+            else
+            {
+                transform.Translate(Vector2.right * (Time.deltaTime * 2));
+            }
         }
     }
 
@@ -91,8 +107,10 @@ public class Bird : MonoBehaviour
         if(collision.gameObject.tag == "spike" && !isDead) 
         {
             gameOverText.gameObject.SetActive(true);
+            playAgain.SetActive(true);
             isRotating = true;
             rb.gravityScale = 2;
+            logicManager.gameOver();
         }
     }
 }
