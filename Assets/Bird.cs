@@ -71,7 +71,7 @@ public class Bird : MonoBehaviour
         if(collision.gameObject.tag == "rightwall")
         {
             hitRightwall = true;
-            transform.localScale = new Vector3(-0.7f, 0.7f, 0.7f);
+            transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);
             score++;
             if(score > 9) 
             {
@@ -84,7 +84,7 @@ public class Bird : MonoBehaviour
         }
         else {
             hitRightwall = false;
-            transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             score++;
             if(score > 9) 
             {
@@ -110,6 +110,16 @@ public class Bird : MonoBehaviour
             playAgain.SetActive(true);
             isRotating = true;
             rb.gravityScale = 2;
+            logicManager.gameOver();
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision) {
+        if(collision.gameObject.tag == "bottom" && !isDead) 
+        {
+            isDead = true;
+            isRotating = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
             logicManager.gameOver();
         }
     }
