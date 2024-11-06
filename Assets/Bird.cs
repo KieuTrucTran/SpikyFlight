@@ -8,7 +8,7 @@ public class Bird : MonoBehaviour
     public Rigidbody2D rb;
     public float jumpForce = 8f;
 
-    private bool hitRightwall = false;
+    public bool hitRightwall = false;
 
     public int score = 0;
     public Text scoreText;

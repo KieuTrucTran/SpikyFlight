@@ -3647,8 +3647,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1738126846}
   - {fileID: 1187304872}
+  - {fileID: 1738126846}
   - {fileID: 1248997965}
   - {fileID: 1982910505}
   - {fileID: 193478193}
@@ -4278,7 +4278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187304872}
   m_Layer: 0
-  m_Name: SpikeCollection1
+  m_Name: SpikeCollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5859,7 +5859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738126846}
   m_Layer: 0
-  m_Name: SpikeCollection
+  m_Name: SpikeCollection1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6209,7 +6209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  jumpForce: 3.5
+  jumpForce: 4
+  hitRightwall: 0
   score: 0
   scoreText: {fileID: 1943737134}
   gameOverText: {fileID: 299553737}
@@ -6555,7 +6556,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 103292044704826356, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
+    - {fileID: 1753347275950157198, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
+    - {fileID: 5241750667770365804, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
+    - {fileID: 6928392660910164376, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
+    - {fileID: 398652176297998527, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
+    - {fileID: 3592798138277951366, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a20cd12dd7fef48bf1c42e715231ff, type: 3}

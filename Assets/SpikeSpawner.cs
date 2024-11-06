@@ -12,6 +12,9 @@ public class SpikeSpawner : MonoBehaviour
     private Bird birdScript;
 
     private GameObject currentSpikePattern;
+    private GameObject lastSpikePattern;
+
+    private bool lastFrameHitRightwall = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +22,19 @@ public class SpikeSpawner : MonoBehaviour
         birdScript = birdObject.GetComponent<Bird>();
 
         makeSpikeCollection();
-        spawnSpikes();
     }
 
     // Update is called once per frame
     void Update()
     {
-        determineNextSpikeCollection();
-        determineNextSpikePattern();
+        
+        if(birdScript.hitRightwall != lastFrameHitRightwall)
+        {
+            determineNextSpikeCollection();
+            determineNextSpikePattern();
+            spawnSpikes();
+        }
+        lastFrameHitRightwall = birdScript.hitRightwall;
     }
 
     void determineNextSpikeCollection()
@@ -84,12 +92,26 @@ public class SpikeSpawner : MonoBehaviour
 
     void spawnSpikes()
     {
-        // Instantiate left spikes
-        /*for (int i = 0; i < 5; i++)
+        if (birdScript.hitRightwall)
         {
-            GameObject spike = Instantiate(spikePrefab);
-            spike.transform.position = new Vector3(-2.815f, Random.Range(-3.5f, 3.5f), 0);
+            // Instantiate left spikes
+            if (lastSpikePattern != null)
+            {
+                lastSpikePattern.SetActive(false);
+            }
+            lastSpikePattern = Instantiate(currentSpikePattern, new Vector3(-2.815f, 0, 0), Quaternion.identity);
+            lastSpikePattern.SetActive(true);
         }
-        */
+        else
+        {
+            // Instantiate right spikes
+            if (lastSpikePattern != null)
+            {
+                lastSpikePattern.SetActive(false);
+            }
+            lastSpikePattern = Instantiate(currentSpikePattern, new Vector3(2.815f, 0, 0), Quaternion.identity);
+            lastSpikePattern.SetActive(true);
+            
+        }
     }
 }
