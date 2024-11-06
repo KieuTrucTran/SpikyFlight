@@ -15,6 +15,8 @@ public class Bird : MonoBehaviour
     public Text gameOverText;
     public GameObject playAgain;
     public Text title;
+    public Text highScoreText;
+    public Text tapToJump;
 
     private bool isDead = false;
     private bool isRotating = false;
@@ -29,6 +31,11 @@ public class Bird : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        title.gameObject.SetActive(true);
+        // highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore", 0).ToString();
+        // highScoreText.text = "High Score: 0";
+        highScoreText.gameObject.SetActive(true);
+        tapToJump.gameObject.SetActive(true);
         logicManager = logicManagerObject.GetComponent<LogicScript>();
     }
 
@@ -56,6 +63,9 @@ public class Bird : MonoBehaviour
         }
 
         if(isStarted) {
+            title.gameObject.SetActive(false);
+            highScoreText.gameObject.SetActive(false);
+            tapToJump.gameObject.SetActive(false);
             if(hitRightwall)
             {
                 transform.Translate(Vector2.left * (Time.deltaTime * 2.2f));
@@ -115,6 +125,7 @@ public class Bird : MonoBehaviour
             gameOverText.gameObject.SetActive(true);
             playAgain.SetActive(true);
             title.gameObject.SetActive(true);
+            highScoreText.gameObject.SetActive(true);
             isRotating = true;
             rb.gravityScale = 2;
             logicManager.gameOver();
