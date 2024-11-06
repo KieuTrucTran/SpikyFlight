@@ -14,6 +14,7 @@ public class Bird : MonoBehaviour
     public Text scoreText;
     public Text gameOverText;
     public GameObject playAgain;
+    public Text title;
 
     private bool isDead = false;
     private bool isRotating = false;
@@ -113,6 +114,7 @@ public class Bird : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(true);
             playAgain.SetActive(true);
+            title.gameObject.SetActive(true);
             isRotating = true;
             rb.gravityScale = 2;
             logicManager.gameOver();
