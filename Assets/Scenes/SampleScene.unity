@@ -6209,7 +6209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  jumpForce: 4
+  jumpForce: 3.8
   hitRightwall: 0
   score: 0
   scoreText: {fileID: 1943737134}

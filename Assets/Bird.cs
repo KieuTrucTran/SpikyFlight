@@ -57,11 +57,11 @@ public class Bird : MonoBehaviour
         if(isStarted) {
             if(hitRightwall)
             {
-                transform.Translate(Vector2.left * (Time.deltaTime * 2));
+                transform.Translate(Vector2.left * (Time.deltaTime * 2.2f));
             }
             else
             {
-                transform.Translate(Vector2.right * (Time.deltaTime * 2));
+                transform.Translate(Vector2.right * (Time.deltaTime * 2.2f));
             }
         }
     }

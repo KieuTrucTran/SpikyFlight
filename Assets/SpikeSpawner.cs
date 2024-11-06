@@ -40,35 +40,35 @@ public class SpikeSpawner : MonoBehaviour
     void determineNextSpikeCollection()
     {
         birdScript.getScore();
-        if(birdScript.score < 10)
+        if(birdScript.score < 5)
         {
             currentSpikeCollection = spikeCollections[0];
         }
-        else if(birdScript.score < 20)
+        else if(birdScript.score < 10)
         {
             currentSpikeCollection = spikeCollections[1];
         }
-        else if(birdScript.score < 30)
+        else if(birdScript.score < 15)
         {
             currentSpikeCollection = spikeCollections[2];
         }
-        else if(birdScript.score < 40)
+        else if(birdScript.score < 20)
         {
             currentSpikeCollection = spikeCollections[3];
         }
-        else if(birdScript.score < 50)
+        else if(birdScript.score < 25)
         {
             currentSpikeCollection = spikeCollections[4];
         }
-        else if(birdScript.score < 60)
+        else if(birdScript.score < 30)
         {
             currentSpikeCollection = spikeCollections[5];
         }
-        else if(birdScript.score < 70)
+        else if(birdScript.score < 35)
         {
             currentSpikeCollection = spikeCollections[6];
         }
-        else if(birdScript.score < 80)
+        else if(birdScript.score < 40)
         {
             currentSpikeCollection = spikeCollections[7];
         }
