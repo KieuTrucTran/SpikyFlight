@@ -32,9 +32,9 @@ public class Bird : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         title.gameObject.SetActive(true);
-        // highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore", 0).ToString();
+        highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
         // highScoreText.text = "High Score: 0";
-        highScoreText.gameObject.SetActive(true);
+        // highScoreText.gameObject.SetActive(true);
         tapToJump.gameObject.SetActive(true);
         logicManager = logicManagerObject.GetComponent<LogicScript>();
     }
@@ -53,6 +53,11 @@ public class Bird : MonoBehaviour
         }
         if(isDead) 
         {
+            if(score > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", score);
+                highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
+            }
             return;
         }
         if(Input.GetKeyDown(KeyCode.Space))
