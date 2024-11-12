@@ -17,6 +17,8 @@ public class Bird : MonoBehaviour
     public GameObject playAgain;
     public Text title;
     public Text highScoreText;
+    public Text bonbonScoreText;
+    public GameObject bonbonImage;
     public Text tapToJump;
 
     private bool isDead = false;
@@ -42,8 +44,8 @@ public class Bird : MonoBehaviour
 
         title.gameObject.SetActive(true);
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
-        // highScoreText.text = "High Score: 0";
-        // highScoreText.gameObject.SetActive(true);
+        bonbonScoreText.text = PlayerPrefs.GetInt("bonbonScore").ToString();
+
         tapToJump.gameObject.SetActive(true);
         logicManager = logicManagerObject.GetComponent<LogicScript>();
     }
@@ -66,6 +68,7 @@ public class Bird : MonoBehaviour
             {
                 PlayerPrefs.SetInt("highscore", score);
                 highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
+                bonbonScoreText.text = PlayerPrefs.GetInt("bonbonScore").ToString();
             }
             return;
         }
@@ -79,6 +82,8 @@ public class Bird : MonoBehaviour
         if(isStarted) {
             title.gameObject.SetActive(false);
             highScoreText.gameObject.SetActive(false);
+            bonbonScoreText.gameObject.SetActive(false);
+            bonbonImage.gameObject.SetActive(false);
             tapToJump.gameObject.SetActive(false);
             if(hitRightwall)
             {
@@ -169,7 +174,15 @@ public class Bird : MonoBehaviour
             gameOverText.gameObject.SetActive(true);
             playAgain.SetActive(true);
             title.gameObject.SetActive(true);
+
             highScoreText.gameObject.SetActive(true);
+
+            int oldBonbonScore = PlayerPrefs.GetInt("bonbonScore", bonbonScore);
+            PlayerPrefs.SetInt("bonbonScore", bonbonScore + oldBonbonScore);
+            bonbonScoreText.text = (oldBonbonScore + bonbonScore).ToString();
+            bonbonScoreText.gameObject.SetActive(true);
+            bonbonImage.gameObject.SetActive(true);
+
             isRotating = true;
             rb.gravityScale = 2;
             logicManager.gameOver();
