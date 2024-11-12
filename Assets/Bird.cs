@@ -11,6 +11,7 @@ public class Bird : MonoBehaviour
     public bool hitRightwall = false;
 
     public int score = 0;
+    private int bonbonScore = 0;
     public Text scoreText;
     public Text gameOverText;
     public GameObject playAgain;
@@ -23,8 +24,16 @@ public class Bird : MonoBehaviour
 
     private bool isStarted = false;
 
+    private bool isBonbonCollected = false;
+
+    private bool firstBonbonSpawned = false;
+
     private LogicScript logicManager;
     public GameObject logicManagerObject;
+
+    public GameObject bonbon1;
+    public GameObject bonbon2;
+    public GameObject bonbon3;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +89,7 @@ public class Bird : MonoBehaviour
                 transform.Translate(Vector2.right * (Time.deltaTime * 2.2f));
             }
         }
+
     }
 
     public int getScore() 
@@ -89,9 +99,26 @@ public class Bird : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag.Contains("bonbon"))
+        {
+            isBonbonCollected = true;
+            print("Bonbon collision");
+            Destroy(collision.gameObject);
+            int bonbonValue = collision.gameObject.tag[7] - '0';
+            bonbonScore += bonbonValue;
+            print("Bonbon Score: " + bonbonScore);
+        }
         if(collision.gameObject.tag == "rightwall")
         {
             hitRightwall = true;
+
+            //spawn first bonbon
+            if(!firstBonbonSpawned)
+            {
+                spawnBonbon();
+                firstBonbonSpawned = true;
+            }
+
             transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);
             score++;
             if(score > 9) 
@@ -102,8 +129,14 @@ public class Bird : MonoBehaviour
             {
                 scoreText.text = "0" + score;
             }
+
+            if (isBonbonCollected)
+            {
+                spawnBonbon();
+                isBonbonCollected = false;
+            }
         }
-        else {
+        else if (collision.gameObject.tag == "leftwall"){
             hitRightwall = false;
             transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             score++;
@@ -114,6 +147,12 @@ public class Bird : MonoBehaviour
             else 
             {
                 scoreText.text = "0" + score;
+            }
+
+            if (isBonbonCollected)
+            {
+                spawnBonbon();
+                isBonbonCollected = false;
             }
         }
     }
@@ -137,13 +176,32 @@ public class Bird : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision) {
+    void OnCollisionStay2D(Collision2D collision) 
+    {
         if(collision.gameObject.tag == "bottom" && !isDead) 
         {
             isDead = true;
             isRotating = false;
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
             logicManager.gameOver();
+        }
+    }
+
+    void spawnBonbon()
+    {
+        GameObject currentBonbon = bonbon1;
+        if(score >= 15) {
+            currentBonbon = bonbon2;
+        } if(score >= 30) {
+            currentBonbon = bonbon3;
+        }
+        if(hitRightwall)
+        {
+            Instantiate(currentBonbon, new Vector3(-2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(currentBonbon, new Vector3(2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
         }
     }
 }

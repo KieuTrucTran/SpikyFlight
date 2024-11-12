@@ -8,6 +8,9 @@ TagManager:
   - leftwall
   - spike
   - bottom
+  - bonbon_1
+  - bonbon_2
+  - bonbon_3
   layers:
   - Default
   - TransparentFX
