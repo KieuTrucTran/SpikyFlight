@@ -6,6 +6,7 @@ public class AudioPlayer : MonoBehaviour
 {
     public AudioSource jump;
     public AudioSource collectBonbon;
+    public AudioSource dead;
 
     // Start is called before the first frame update
     void Start()
@@ -27,4 +28,9 @@ public class AudioPlayer : MonoBehaviour
     {
         collectBonbon.Play();
     }
+
+    public void PlayDeadSound()
+    {
+        dead.Play();
+    }   
 }

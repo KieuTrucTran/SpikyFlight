@@ -195,6 +195,7 @@ public class Bird : MonoBehaviour
             isRotating = true;
             rb.gravityScale = 2;
 
+            audioPlayer.PlayDeadSound();
             animatorScript.PlayDeadAnimation();
 
             logicManager.gameOver();
