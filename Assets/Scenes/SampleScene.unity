@@ -7766,6 +7766,8 @@ GameObject:
   - component: {fileID: 1797924134}
   - component: {fileID: 1797924133}
   - component: {fileID: 1797924132}
+  - component: {fileID: 1797924138}
+  - component: {fileID: 1797924137}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -7797,7 +7799,6 @@ MonoBehaviour:
   bonbonScoreText: {fileID: 1186713959}
   bonbonImage: {fileID: 127878497}
   tapToJump: {fileID: 908352773}
-  isBonbonCollected: 0
   logicManagerObject: {fileID: 8890151}
   bonbon1: {fileID: 3110578082728368497, guid: 2cf548d3ba5790f4db5c3f87b432a824, type: 3}
   bonbon2: {fileID: 4611945068599348007, guid: 7cb1ee7071219bb48a751feadd9b0d2e, type: 3}
@@ -7942,6 +7943,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1797924137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797924131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18eec0286ff96408aff0733bbb04bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+--- !u!95 &1797924138
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797924131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03a8531bc3b055346a8292ee5ccd50bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1847841724
 PrefabInstance:
   m_ObjectHideFlags: 0

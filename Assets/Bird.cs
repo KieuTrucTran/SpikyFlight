@@ -40,10 +40,13 @@ public class Bird : MonoBehaviour
     public GameObject audioSource;
     AudioPlayer audioPlayer;
 
+    AnimatorScript animatorScript;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animatorScript = GetComponent<AnimatorScript>();
 
         title.gameObject.SetActive(true);
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
@@ -191,6 +194,9 @@ public class Bird : MonoBehaviour
 
             isRotating = true;
             rb.gravityScale = 2;
+
+            animatorScript.PlayDeadAnimation();
+
             logicManager.gameOver();
         }
     }
