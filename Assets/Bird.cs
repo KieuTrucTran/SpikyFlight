@@ -37,6 +37,9 @@ public class Bird : MonoBehaviour
     public GameObject bonbon2;
     public GameObject bonbon3;
 
+    public GameObject audioSource;
+    AudioPlayer audioPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,8 @@ public class Bird : MonoBehaviour
 
         tapToJump.gameObject.SetActive(true);
         logicManager = logicManagerObject.GetComponent<LogicScript>();
+
+        audioPlayer = audioSource.GetComponent<AudioPlayer>();
     }
 
     // Update is called once per frame
@@ -106,6 +111,7 @@ public class Bird : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("bonbon"))
         {
+            audioPlayer.PlayBonbonSound();   
             isBonbonCollected = true;
             print("Bonbon collision");
             Destroy(collision.gameObject);

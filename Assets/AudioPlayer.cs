@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-
-    public AudioSource audioSource;
+    public AudioSource jump;
+    public AudioSource collectBonbon;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +18,13 @@ public class AudioPlayer : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            audioSource.Play();
+            jump.Play();
             // audioSource.clip = null;
         }
+    }
+
+    public void PlayBonbonSound()
+    {
+        collectBonbon.Play();
     }
 }
