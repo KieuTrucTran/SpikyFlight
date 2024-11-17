@@ -26,7 +26,14 @@ public class AnimatorScript : MonoBehaviour
 
     void PlayJumpAnimation()
     {
-        animator.Play("Jump");
+        if(GetComponent<Bird>().isDead == false)
+        {
+            animator.Play("Jump");
+        } else
+        {
+            animator.Play("Dead");
+        };
+        
     }
 
     public void PlayDeadAnimation()

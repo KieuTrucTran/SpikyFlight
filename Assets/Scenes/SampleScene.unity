@@ -481,7 +481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &90116734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4075,7 +4075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &908352772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4612,7 +4612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1081961697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5159,7 +5159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1186713958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5752,7 +5752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1317499754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7790,6 +7790,7 @@ MonoBehaviour:
   bonbonScoreText: {fileID: 1186713959}
   bonbonImage: {fileID: 1317499753}
   tapToJump: {fileID: 908352773}
+  isDead: 0
   logicManagerObject: {fileID: 8890151}
   bonbon1: {fileID: 3110578082728368497, guid: 2cf548d3ba5790f4db5c3f87b432a824, type: 3}
   bonbon2: {fileID: 4611945068599348007, guid: 7cb1ee7071219bb48a751feadd9b0d2e, type: 3}
@@ -7947,6 +7948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  bird: {fileID: 1797924131}
 --- !u!95 &1797924138
 Animator:
   serializedVersion: 5
@@ -9871,7 +9873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8779923809505081150
 MonoBehaviour:
   m_ObjectHideFlags: 0

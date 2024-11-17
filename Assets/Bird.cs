@@ -21,7 +21,7 @@ public class Bird : MonoBehaviour
     public GameObject bonbonImage;
     public Text tapToJump;
 
-    private bool isDead = false;
+    public bool isDead = false;
     private bool isRotating = false;
 
     private bool isStarted = false;
@@ -118,11 +118,11 @@ public class Bird : MonoBehaviour
         {
             audioPlayer.PlayBonbonSound();   
             isBonbonCollected = true;
-            print("Bonbon collision");
+            // print("Bonbon collision");
             Destroy(collision.gameObject);
             int bonbonValue = collision.gameObject.tag[7] - '0';
             bonbonScore += bonbonValue;
-            print("Bonbon Score: " + bonbonScore);
+            // print("Bonbon Score: " + bonbonScore);
         }
         if(collision.gameObject.tag == "rightwall")
         {
