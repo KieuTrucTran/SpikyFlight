@@ -48,6 +48,8 @@ public class Bird : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animatorScript = GetComponent<AnimatorScript>();
 
+        PlayerPrefs.SetInt("bonbonScore", 0);
+
         title.gameObject.SetActive(true);
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
         bonbonScoreText.text = PlayerPrefs.GetInt("bonbonScore").ToString();
