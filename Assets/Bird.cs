@@ -33,6 +33,10 @@ public class Bird : MonoBehaviour
     private LogicScript logicManager;
     public GameObject logicManagerObject;
 
+    private GameObject activeBonbon;
+    private float initialYPosition;
+    private bool isGoingUp = true;
+
     public GameObject bonbon1;
     public GameObject bonbon2;
     public GameObject bonbon3;
@@ -48,7 +52,8 @@ public class Bird : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animatorScript = GetComponent<AnimatorScript>();
 
-        PlayerPrefs.SetInt("bonbonScore", 0);
+        // PlayerPrefs.SetInt("bonbonScore", 0);
+        // PlayerPrefs.SetInt("highscore", 0);
 
         title.gameObject.SetActive(true);
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highscore").ToString();
@@ -63,6 +68,27 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(activeBonbon != null)
+        {
+            if(activeBonbon.transform.position.y > initialYPosition + 0.1f)
+            {
+                isGoingUp = false;
+            }
+            else if(activeBonbon.transform.position.y < initialYPosition - 0.1f)
+            {
+                isGoingUp = true;
+            }
+            if(isGoingUp)
+            {
+                activeBonbon.transform.Translate(Vector2.up * (Time.deltaTime * 0.2f));
+            }
+            else
+            {
+                activeBonbon.transform.Translate(-Vector2.up * (Time.deltaTime * 0.2f));
+            }
+            
+        }
+        
         if(isStarted == false) 
         {
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
@@ -225,11 +251,13 @@ public class Bird : MonoBehaviour
         }
         if(hitRightwall)
         {
-            Instantiate(currentBonbon, new Vector3(-2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
+            activeBonbon = Instantiate(currentBonbon, new Vector3(-2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
+            initialYPosition = activeBonbon.transform.position.y;
         }
         else
         {
-            Instantiate(currentBonbon, new Vector3(2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
+            activeBonbon = Instantiate(currentBonbon, new Vector3(2, Random.Range(-3.0f, 3.0f), 0), Quaternion.identity);
+            initialYPosition = activeBonbon.transform.position.y;
         }
     }
 }

@@ -5762,14 +5762,14 @@ RectTransform:
   m_GameObject: {fileID: 1317499753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.64, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.56, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1110479995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: -246}
+  m_AnchoredPosition: {x: -33, y: -246}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317499755
@@ -7948,7 +7948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  bird: {fileID: 1797924131}
 --- !u!95 &1797924138
 Animator:
   serializedVersion: 5
